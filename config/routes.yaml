@@ -8,12 +8,27 @@ setupcheck:
     path: /api/setup-check
     controller: App\Controller\DefaultController::setupCheck
 
+exchange_rates_one:
+    path: /api/exchange-rates/{currency}/{date}
+    controller: App\Controller\ExchangeRatesController::showOne
+    defaults:
+        date: 'today'
+    requirements:
+        currency: '[A-Z]{3}'
+        date: '\d{4}-\d{2}-\d{2}'  # YYYY-MM-DD format
+
+exchange_rates_all:
+    path: /api/exchange-rates/{date}
+    controller: App\Controller\ExchangeRatesController::showAll
+    defaults:
+        date: 'today'
+    requirements:
+        date: '\d{4}-\d{2}-\d{2}'  # YYYY-MM-DD format
+
 index:
     path: /{wildcard}
-    defaults: {
-        _controller: App\Controller\DefaultController::index
-    }
+    controller: App\Controller\DefaultController::index
     requirements:
         wildcard: .*
-    # controller: App\Controller\DefaultController::index
+
 

@@ -1,5 +1,3 @@
-// ./assets/js/components/Users.js
-
 import React, {Component} from 'react';
 import axios from 'axios';
 

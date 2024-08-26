@@ -1,10 +1,11 @@
-version: '3.8'
 services:
 
   webserver:
     # Aby pliki byly poprawnie synchronizowane między kontenerem a windowsem
     volumes:
       - ./:/var/www/html/
+      - vendors:/var/www/html/vendor
+      - build:/var/www/html/public/build
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,3 +17,35 @@ services:
       - APACHE_RUN_USER=www-data
       - APACHE_RUN_GROUP=www-data
       - APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+  watcher:
+    build:
+      context: .
+      dockerfile: watcher.Dockerfile
+    container_name: recruitment-watcher
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app/
+      - build:/usr/src/app/public/build
+    environment:
+      - NODE_ENV=development
+
+  # Use:
+  # $ docker compose --profile test run phpunit
+  # or
+  # $ docker compose --profile test run phpunit --filter MyTestClass::testMethod
+  phpunit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recruitment-phpunit
+    volumes:
+      - ./:/var/www/html/
+      - vendors:/var/www/html/vendor
+    entrypoint: ["php", "bin/phpunit"]
+    profiles:
+      - tests
+
+volumes:
+  vendors:
+  build:

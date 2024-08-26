@@ -1,0 +1,16 @@
+# config/packages/currencies.yaml
+parameters:
+    currencies.supported:
+        - 'EUR'
+        - 'USD'
+        - 'CZK'
+        - 'IDR'
+        - 'BRL'
+
+    currencies.basic:
+        - 'EUR'
+        - 'USD'
+
+    exchange_rates.std_sell_margin: 0.07
+    exchange_rates.std_buy_margin: 0.05
+    exchange_rates.ext_sell_margin: 0.15

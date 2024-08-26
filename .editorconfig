@@ -1,0 +1,58 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Root indicates that this is the top-most EditorConfig file.
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Match specific files (e.g., Markdown files)
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+# JavaScript/TypeScript specific settings (React)
+[*.js, *.jsx, *.ts, *.tsx]
+indent_style = space
+indent_size = 2
+quote_type = single
+
+# JSON files (React configuration)
+[*.json]
+indent_style = space
+indent_size = 2
+
+# CSS/SCSS specific settings (React)
+[*.css, *.scss]
+indent_style = space
+indent_size = 2
+
+# HTML specific settings
+[*.html]
+indent_style = space
+indent_size = 2
+
+# YAML specific settings (Symfony)
+[*.yml, *.yaml]
+indent_style = space
+indent_size = 2
+
+# PHP specific settings (Symfony)
+[*.php]
+indent_style = space
+indent_size = 4
+
+# Twig specific settings (Symfony)
+[*.twig]
+indent_style = space
+indent_size = 4
+
+# Match Makefiles
+[Makefile]
+indent_style = tab
